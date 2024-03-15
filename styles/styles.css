@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400&display=swap');
+
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(4, 163, 110);
+}
+
+.weather-app {
+    max-width: 1280px;
+    margin: auto;
+    height: 100vh;
+}
+
+header {
+    display: grid;
+    grid-template-columns: auto auto; /* Два столбца: один для заголовка и переключателя, другой для поиска и кнопок */
+    
+    align-items: center; /* Выравниваем контейнер по вертикали */
+    height: 80px;
+}
+
+.forecast-options_left {
+    display: flex; /* Для выравнивания элементов внутри */
+    align-items:center; /* Выравниваем элементы по вертикали */   
+}
+
+.forecast-options_right {
+    display: flex; /* Для выравнивания элементов внутри */
+    align-items: center; /* Выравниваем элементы по вертикали */
+    justify-content: space-around; /* Расстояние между элементами */
+    justify-items: flex-end; /* Выравниваем последний элемент по правому краю */
+    justify-self: flex-end;
+}
+
+h1 {
+    color: rgb(7, 245, 245);
+    margin: 0; /* Убираем внешние отступы */
+}
+
+.forecast-options_right input{
+    width: 200px;
+    height: 47px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    background-color: aliceblue;
+}
+.forecast-options_right button{
+    height: 50px;
+    border-radius: 8px;
+    border: none;
+}
+
+/* ------------Грид контейнеры-------------- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, [col] 1fr);
+    grid-template-rows: repeat(2, [row] 1fr);
+    height: 200px;
+    grid-auto-flow: dense;
+    gap: 10px;
+}
+
+.grid-item {
+    padding: 15px 10px;
+    border-radius: 10px;
+    min-height: 250px;
+    /*border: #333 solid 3px;*/
+}
+
+.weather {
+    border-radius: 10px;
+    min-height: 225px;
+    background-color: rgb(48, 100, 83);
+    padding: 20px;
+    overflow: hidden; /* Добавляем overflow: hidden */
+}
+
+.weather span {
+    display: block; /* Изменяем display на block */
+}
+
+.weather .day {
+    font-weight: bold;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 black, 0 8px 15px rgba(0, 0, 0, 0.582);
+    padding-bottom: 5px;
+}
+
+.weather .date {
+    font-size: 14px;
+}
+
+.weather ._icon p {
+    display: contents;
+    margin: auto;
+    font-weight: bold;
+    border: #333 solid 3px;
+}
+
+.weather .temperature {
+    font-weight: bold;
+    font-size: 36px;
+    margin-bottom: -5px;
+}
+
+.reklama {
+    grid-column: span 1;
+    grid-row: row 2;
+    background-color: rgb(48, 100, 83);
+}
+
+/*------------------*/
+
+.weather {
+    grid-column: span 1;
+    grid-row: row 1;
+}
+
+.hourly-weather {
+    grid-column: span 4;
+    grid-row: row 2;
+    
+}
+
+.current-weather {
+    background-color: rgb(50, 128, 82);
+    grid-column: span 2;
+    grid-row: row 1;
+}
+
+.map-location {
+    grid-column: span 2;
+    grid-row: row 1;
+    margin: 0;
+    padding: 0; /* Добавляем это */
+    display: block;
+}
+
+/* Стили для карты */
+.map-location #map {
+    position: relative; /* Вероятно, вам нужен 'relative', а не 'cover' */
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0; /* Добавляем это */
+}
+
+
+/*-----------------current-weather for table------------Таблица влажность и ветере и градиент заказа и рассвета--------*/
+.forecast {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    align-self: center;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 black, 0 8px 15px rgba(0, 0, 0, 0.582);
+}
+.current-weather_brief table{
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 black, 0 8px 15px black;
+}
+.sunrise-sunset table {
+    width: 100%;
+    height: 20px;
+    border-radius: 8px;
+    text-align: center;  
+    font-size: 16px;
+    background: linear-gradient(135deg, #ffac5f, #7b88fe);
+    /* Градиентный фон */
+    border: none;
+}
+.current-weather_brief img {
+    margin: 0;
+    width: 14px;
+}
+.current-weather_brief th {
+    text-align: left;
+    /* Выравниваем текст по левому краю */
+}
+.current-weather_brief td {
+    text-align: right;
+    /* Выравниваем текст по правому краю */
+}
+/*/////////////////////////////////////////////////////////////////*/
+
+
+/*------------------*/
+
+.weather_regul {
+    width: 100%;
+}
+
+.hourly-weather {
+    margin: 0;
+    padding: 0;
+}
+
+.hourly-weather-info {
+    display: flex; /* Размещаем элементы внутри контейнера в одной строке */
+    flex-direction: row; /* Располагаем дочерние элементы вертикально */
+    height: 100%; /* Занимаем всю доступную высоту */
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+.hourly-weather-item_info {
+    flex: 1; /* Это позволит элементам занимать равные пространства внутри контейнера */
+    margin: 0 1px; /* Добавляем небольшие отступы между элементами */
+    text-align: center; /* Выравниваем текст по центру внутри элемента */
+    border-radius: 8px;
+    padding-bottom: 10px;
+    background-color: rgb(50, 128, 82);
+    box-shadow: inset 0 0 0 black, 0 8px 15px rgba(0, 0, 0, 0.582);
+}
+
+.hourly-weather-item_info .hourly__dayOfWeek {
+    margin: 5px 0px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 black, 0 4px 7px black;
+}
+
+
+.btn {
+    margin: 0 0px;
+    padding: 8px 15px;
+    overflow: hidden;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-width: 0;
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    outline: none;
+    cursor: pointer;
+ }
+ .btn1 {
+    background: linear-gradient(90deg, #1a5a4f, #41b4ab);
+ }
+ .btn2 {
+    background: linear-gradient(90deg, #a3ffb0, #2bd9e8);
+ }
+ .btn3 {
+    background: linear-gradient(90deg, #49c2ff, #6a27d2);
+ }
+ .btn:before, .btn:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    left: -110%;
+    top: 0;
+    opacity: 0.1;
+    background: black;
+    transform: skewX(25deg);
+    transition: .5s ease;
+ }
+ .btn:hover:before {
+    left: -10%;
+    transition: .3s ease;
+ }
+ .btn:hover:after {
+    left: -20%;
+ }
+
+
+
+
+
+@media only screen and (max-width: 740px) {
+    header {
+        display: grid;
+        grid-template-columns: auto; /* Один столбец */
+        grid-template-rows: auto auto; /* Две строки */
+        height: auto;
+        justify-content: center; /* Расстояние между элементами по горизонтали */
+    }
+
+    .forecast-options_right {
+        grid-row: 2; /* Размещаем блок справа на второй строке */
+    }
+    
+    h1 {
+        font-size: 24px;
+        margin-bottom: 10px; 
+    }
+    .forecast-options_right input{
+        width: 100px;
+        height: 40px;
+        font-size: 14px;
+        border-radius: 8px;
+        border: none;
+        justify-content: space-around;
+        align-self: center;
+    }
+    .forecast-options_right button{
+        height: 43px;
+        border-radius: 8px;
+        border: none;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, [col] 1fr);
+        grid-template-rows: repeat(5, [row] 1fr);
+        gap: 10px;
+    }
+
+    .reklama {
+        grid-column: span 1;
+        grid-row: row 1;
+    }
+    .current-weather {
+        grid-column: span 2;
+        grid-row: row 3;
+    }
+
+    .hourly-weather {
+        grid-column: span 2;
+        grid-row: row 4;
+    }
+
+    .map-location {
+        grid-column: span 2;
+        grid-row: row 5;
+    }
+
+    .hourly-weather {
+
+        margin: 0px; /* Пример отступов */
+        padding: 0px; /* Пример отступов */
+    }
+    .hourly-weather-info {
+        
+        display: flex;
+        flex-direction: column;
+        
+         /* Занимаем всю доступную высоту */
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
+        
+    }
+    .hourly-weather-item_info {
+        display: flex;
+        align-items: center;
+        margin: 0px 0px;
+        padding: 0px;
+        border-radius: 8px;
+        font-size: small;
+        height: 40px;
+        background-color: rgb(50, 128, 82);
+        box-shadow: inset 0 0 0 black, 0 8px 15px rgba(0, 0, 0, 0.582);
+    }
+    
+    .hourly-weather-item_info .hourly__dayOfWeek {
+        margin-right: auto; /* Переместить элемент в начало контейнера */
+        margin: 0px 0px; /* Дополнительный отступ по вертикали */
+        padding: 5px 15px; /* Убрать внутренние отступы */
+        border-radius: 8px;
+        box-shadow: inset 0 0 0 black, 0 4px 7px black;
+        background-color: rgb(50, 128, 82);
+    }    
+    .hourly-weather-item_info .hourly__icon{
+        margin-left: auto;
+    }
+    .hourly-weather-item_info .hourly__minTemp{
+        margin-right: 15px;
+    }
+    .hourly-weather-item_info .hourly__minWindSpeed{
+        margin-right: 15px;
+    }
+}
