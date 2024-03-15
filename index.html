@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Site Example</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <script type="module" src="js/appHeader.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    
+</head>
+
+<body>
+    <div class="weather-app">
+
+        <header>
+            <div class="forecast-options_left">
+                <h1>Weather App!</h1>
+            </div>
+
+            <div class="forecast-options_right">
+                <form class="search" action="/search" method="get">
+                    <input type="text" name="city" placeholder="Search..." />
+                    <button type="submit" class="btn btn1">Search</button>
+                    <!-- Укажите type="submit" для корректного отправления формы -->
+                    <button class="btn btn1" data-term="term1">Today</button>
+                    <button class="btn btn1" data-term="term1">Tomorrow</button>
+                    <button class="btn btn1" data-term="term1">5-day forecast</button>
+                    <!--изменить интерфейс-->
+                </form>
+            </div>
+            
+        </header>
+
+        <!-- Контейнер сетки -->
+        <div class="grid-container">
+
+            <!-- Виджет погоды -->
+            <div class="weather grid-item" id="term1">
+                <span class="day"></span>
+                <span class="date"></span>
+                <span class="_icon"><img src="img/icons8-маркер-40.png" width="11" />
+                    <p class="city-name"></p>
+                    <p class="time"></p>
+                </span>
+
+                <span class="weather-icon"></span>
+                <span class="temperature"></span>
+                <span class="description"></span>
+            </div>
+
+            <!-- Карта местоположения -->
+            <div class="map-location grid-item">
+                <div id="map"></div>
+            </div>
+            
+            
+            <!-- Погода по часам -->
+            <div class="hourly-weather grid-item" id="term2" id="term3">
+                <div class="hourly-weather-info">
+
+                </div>  
+            </div>
+            <!-- Текущая погода -->
+            <div class="current-weather grid-item" id="term1">
+                <div class="current-weather_brief">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><img src="img/icons8-вода-40.png" />HUMIDITY</th>
+                                <td id="humidity"></td>
+                            </tr>
+                            <tr>
+                                <th><img src="img/icons8-ветер-40.png" />WIND</th>
+                                <td id="wind-speed"></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div class="current-weather_mini" >
+
+                    <div class="forecast">
+                        <div class="forecast__item">
+                            <div class="forecast__time"></div>
+                            <div class="forecast__icon"></div>
+                            <div class="forecast__temp"></div>
+                        </div>
+                        <div class="forecast__item">
+                            <div class="forecast__time"></div>
+                            <div class="forecast__icon"></div>
+                            <div class="forecast__temp"></div>
+                        </div>
+                        <div class="forecast__item">
+                            <div class="forecast__time"></div>
+                            <div class="forecast__icon"></div>
+                            <div class="forecast__temp"></div>
+                        </div>
+                        <div class="forecast__item">
+                            <div class="forecast__time"></div>
+                            <div class="forecast__icon"></div>
+                            <div class="forecast__temp"></div>
+                        </div>
+                    </div>
+
+                    <div class="sunrise-sunset ">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td id="sunrise">06:00</td>
+                                    <td id="sunset">18:00</td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            
+            
+            <div class="reklama grid-item">Reklama</div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Создаем карту Leaflet.js и добавляем ее в элемент с id "map"
+        var map = L.map('map').setView([48.5160, 34.6129], 13);
+    
+        // Добавляем слой карты (например, OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+        // Создаем маркер с всплывающей подсказкой
+        var marker = L.marker([48.5160, 34.6129]).addTo(map);
+        marker.bindTooltip("А я вам сейчас покажу откуда<br> на Беларусь готовили нападение", {permanent: true}).openTooltip();
+    </script>
+</body>
+</html>
